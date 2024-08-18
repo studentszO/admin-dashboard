@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body {
+    display: grid;
+    grid-template: 1fr 9fr / 1fr 4fr;
+}
+
+/* SIDEBAR CSS */
+.sidebar {
+    background-color: rgb(82, 82, 255);
+    grid-area: 1 / 1 / -1 / 2;
+}
+
+/* MAIN-CONTENT CSS */
+.main-content {
+    grid-area: 2 / 2 / -1 / -1;
+    background-color: rgb(230, 230, 230);
+}
+
+/* HEADER CSS */
+.header {
+    grid-area: 1 / 2 / 2 / 3;
+}
