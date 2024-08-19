@@ -10,6 +10,8 @@
 :root {
     --avatar-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     --avatar-border: 2px rgb(230, 230, 230) solid;
+    --clr-main: rgb(82, 82, 255);
+    --clr-sub: rgb(153, 0, 255);
 }
 * {
     padding: 0;
@@ -27,7 +29,7 @@ body {
 
 /* SIDEBAR CSS */
 .sidebar {
-    background-color: rgb(82, 82, 255);
+    background-color: var(--clr-main);
     * {
         color: white;
     }
@@ -82,9 +84,10 @@ body {
 .header {
     grid-area: 1 / 2 / 2 / 3;
     display: grid;
-    grid-template: 5rem 0.3fr / 2fr 1fr;
+    grid-template-rows: 5rem 0.3fr;
+    box-shadow: rgba(0, 0, 0, 0.45) 1px 12px 15px -20px;
+    z-index: 1;
         img[src="imgs/avatar.jpeg"] {
-            width: 90px;
             border-radius: 50%;
             border: var(--avatar-border);
             box-shadow: var(--avatar-shadow);
@@ -96,22 +99,21 @@ body {
             justify-items: start;
             align-items: center;
         }
-        > div:last-child {
-            grid-area: 2 / 1 / 3 / 3;
-        }
         > div div:last-child {
             grid-area: 1 / 2 / 2 / 3;
             display: grid;
             grid-auto-flow: column;
             align-items: center;
             column-gap: 20px;
-                > img[src="imgs/avatar.jpeg"] {
-                    width: 60px;
-                    grid-area: 1 / 2 / 2 / 3;
-                }
-                > div {
-                    grid-area: 1 / 3 / 2 / 4;
-                }
+            > img[src="imgs/avatar.jpeg"] {
+                width: 60px;
+                grid-area: 1 / 2 / 2 / 3;
+            }
+            > div {
+                grid-area: 1 / 3 / 2 / 4;
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
         }
         form {
             display: grid;
@@ -120,26 +122,73 @@ body {
             align-items: center;
             width: 100%;
             height: 100%;
-                label {
-                    padding-left: 40px;
+            label {
+                padding-left: 40px;
+            }
+            input {
+                width: 85%;
+                height: 35%;
+                border: none;
+                border-radius: 30px;
+                background-color: rgb(214, 214, 214);
+                padding: 15px;
+                &:focus {
+                    outline: none;
+                    box-shadow: var(--avatar-shadow);
+                    border: rgb(94, 94, 94, 0.1) solid 1px;
                 }
-                input {
-                    width: 85%;
-                    height: 35%;
-                    border: none;
-                    border-radius: 30px;
-                    background-color: rgb(214, 214, 214);
-                    padding: 15px;
-                        &:focus {
-                            outline: none;
+            }
+        }
+        > div:last-child {
+            grid-area: 2 / 1 / 3 / 3;
+            display: grid;
+            grid-template: 100% / 66% 33%;
+                .greet-user {
+                    display: grid;
+                    grid-template: 45px 55px / 130px 500px;
+                    row-gap: 5px;
+                    font-weight: 600;
+                    > img {
+                        grid-area: 1 / 1 / 3 / 2;
+                        align-self: center;
+                        margin-left: 40px;
+                        width: 75px;
+                    }
+                    > div:first-of-type {
+                        grid-area: 1 / 2 / 2 / 3 ;
+                        align-self: end;
+                        font-size: 0.9rem;
+                    }
+                    > div:last-child {
+                        grid-area: 2 / 2 / 3 / 3;
+                        align-self: start;
+                        font-size: 1.4rem;
+                        letter-spacing: -1px;
+                    }
+                }
+                > nav ol {
+                    width: 100%;
+                    height: 100%;
+                    display: grid;
+                    grid-auto-flow: column;
+                    place-items: center;
+                    a {
+                        color: white;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+                        background-color: var(--clr-main);
+                        padding: 7px 30px;
+                        border-radius: 30px;
+                        &:hover {
+                            background-color: var(--clr-sub);
                             box-shadow: var(--avatar-shadow);
-                            border: rgb(94, 94, 94, 0.1) solid 1px;
                         }
+                    }
                 }
         }
-}
-
-.header-icon {
-    width: 1.5rem;
-}
-
+    }
+    
+    .header-icon {
+        width: 1.5rem;
+    }
+    
